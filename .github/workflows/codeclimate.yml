@@ -27,7 +27,7 @@ jobs:
       - name: Upload coverage report to Code Climate  
         run: |  
           sudo apt-get install -y curl  
-          bash <(curl -s https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64)  
+          bash <(curl -Ls https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64)  
           chmod +x test-reporter-latest-linux-amd64  
           ./test-reporter-latest-linux-amd64 before-build  
           mvn clean test jacoco:report  
