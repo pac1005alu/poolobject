@@ -1,0 +1,36 @@
+name: Code Climate Coverage
+
+on:  
+  push:  
+    branches: [ main, master ]  
+  pull_request:  
+    branches: [ main, master ]  
+
+jobs:  
+  test:  
+    runs-on: ubuntu-latest  
+
+    steps:  
+      - name: Checkout code  
+        uses: actions/checkout@v4  
+
+      - name: Set up JDK 17  
+        uses: actions/setup-java@v3  
+        with:  
+          distribution: 'temurin'  
+          java-version: '17'  
+
+      - name: Build and run tests with JaCoCo  
+        run: |  
+          mvn clean verify  
+      
+      - name: Upload coverage report to Code Climate  
+        run: |  
+          sudo apt-get install -y curl  
+          bash <(curl -s https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64)  
+          chmod +x test-reporter-latest-linux-amd64  
+          ./test-reporter-latest-linux-amd64 before-build  
+          mvn clean test jacoco:report  
+          ./test-reporter-latest-linux-amd64 after-build --exit-code $?  
+        env:  
+          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPO_TOKEN }}  
