@@ -24,13 +24,21 @@ jobs:
         run: |  
           mvn clean verify  
       
-      - name: Upload coverage report to Code Climate  
+      - name: Download Code Climate Test Reporter  
         run: |  
-          sudo apt-get install -y curl  
-          bash <(curl -Ls https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64)  
+          curl -Ls https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 -o test-reporter-latest-linux-amd64
           chmod +x test-reporter-latest-linux-amd64  
-          ./test-reporter-latest-linux-amd64 before-build  
-          mvn clean test jacoco:report  
-          ./test-reporter-latest-linux-amd64 after-build --exit-code $?  
+
+      - name: Before build step for Code Climate  
+        run: ./test-reporter-latest-linux-amd64 before-build  
         env:  
-          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPO_TOKEN }}  
+          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
+
+      - name: Run tests and generate coverage report  
+        run: mvn clean test jacoco:report
+
+      - name: After build step for Code Climate  
+        run: ./test-reporter-latest-linux-amd64 after-build --exit-code $?  
+        env:  
+          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
+
