@@ -88,6 +88,10 @@
         <groupId>org.sonarsource.scanner.maven</groupId>
         <artifactId>sonar-maven-plugin</artifactId>
         <version>3.9.1.2184</version>
+        <configuration>
+          <!-- Aquí estamos usando la variable de entorno SONAR_TOKEN -->
+          <sonar.login>${env.SONAR_TOKEN}</sonar.login>
+        </configuration>
       </plugin>
     </plugins>
   </build>
