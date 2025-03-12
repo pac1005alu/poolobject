@@ -38,7 +38,6 @@ jobs:
         run: mvn clean test jacoco:report
 
       - name: After build step for Code Climate  
-        run: ./test-reporter-latest-linux-amd64 after-build --exit-code $?  
+        run: ./test-reporter-latest-linux-amd64 after-build --exit-code $? -t jacoco  
         env:  
           CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
-
