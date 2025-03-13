@@ -1,0 +1,25 @@
+<build>
+    <plugins>
+        <!-- Configuración de JaCoCo para la cobertura de pruebas -->
+        <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.7</version> <!-- Asegúrate de usar la última versión disponible -->
+            <executions>
+                <!-- Prepara el agente de JaCoCo antes de ejecutar las pruebas -->
+                <execution>
+                    <goals>
+                        <goal>prepare-agent</goal>
+                    </goals>
+                </execution>
+                <!-- Genera el informe después de ejecutar las pruebas -->
+                <execution>
+                    <goals>
+                        <goal>report</goal>
+                    </goals>
+                    <phase>verify</phase> <!-- Este paso se ejecuta después de las pruebas -->
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>

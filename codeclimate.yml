@@ -1,0 +1,25 @@
+version: "2"
+engines:
+  java:
+    enabled: true
+    config:
+      max_complexity: 10   # Complejidad ciclomática máxima permitida
+      max_duplicate_lines: 50  # Límite de líneas duplicadas
+  duplication:
+    enabled: true
+    config:
+      threshold: 50  # Umbral de duplicación
+
+checks:
+  complexity:
+    enabled: true
+    threshold: 10  # Umbral para la complejidad ciclomática
+  duplication:
+    enabled: true
+    threshold: 50  # Umbral de duplicación
+  issues:
+    enabled: true  # Habilita la detección de problemas generales
+
+test_report:
+  path: "target/test-coverage.xml"  # Ruta al archivo de cobertura de JaCoCo
+  engine: jacoco  # Usa JaCoCo como herramienta de cobertura
