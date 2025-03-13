@@ -32,9 +32,9 @@ jobs:
       - name: Upload coverage report to Code Climate  
         run: |  
  
-          bash <(curl -Ls https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64)  
-          chmod +x test-reporter-latest-linux-amd64  
-          ./test-reporter-latest-linux-amd64 before-build  
+          curl -Ls -o cc-test-reporter https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+          chmod +x cc-test-reporter 
+          ./cc-test-reporter before-build  
           mvn clean test jacoco:report  
           echo "Checking if jacoco.xml exists..."
           ls -lh target/jacoco/  
