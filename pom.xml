@@ -1,25 +1,35 @@
-<build>
-    <plugins>
-        <!-- Configuración de JaCoCo para la cobertura de pruebas -->
-        <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.8.7</version> <!-- Asegúrate de usar la última versión disponible -->
-            <executions>
-                <!-- Prepara el agente de JaCoCo antes de ejecutar las pruebas -->
-                <execution>
-                    <goals>
-                        <goal>prepare-agent</goal>
-                    </goals>
-                </execution>
-                <!-- Genera el informe después de ejecutar las pruebas -->
-                <execution>
-                    <goals>
-                        <goal>report</goal>
-                    </goals>
-                    <phase>verify</phase> <!-- Este paso se ejecuta después de las pruebas -->
-                </execution>
-            </executions>
-        </plugin>
-    </plugins>
-</build>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>poolobject</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <build>
+        <plugins>
+            <!-- Configuración de JaCoCo para la cobertura de pruebas -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.7</version>
+                <executions>
+                    <!-- Prepara el agente de JaCoCo antes de ejecutar las pruebas -->
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <!-- Genera el informe después de ejecutar las pruebas -->
+                    <execution>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <phase>verify</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
