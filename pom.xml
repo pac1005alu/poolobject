@@ -17,12 +17,14 @@
                 <executions>
                     <!-- Prepara el agente de JaCoCo antes de ejecutar las pruebas -->
                     <execution>
+                        <id>prepare-agent</id> <!-- Se agrega un ID único -->
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <!-- Genera el informe después de ejecutar las pruebas -->
                     <execution>
+                        <id>generate-report</id> <!-- Se agrega un ID único -->
                         <goals>
                             <goal>report</goal>
                         </goals>
