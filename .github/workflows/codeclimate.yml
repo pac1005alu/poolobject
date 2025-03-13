@@ -23,21 +23,21 @@ jobs:
       - name: Build and run tests with JaCoCo  
         run: |  
           mvn clean verify  
-      
-      - name: Download Code Climate Test Reporter  
+
+      - name: List generated files (DEBUG)  
         run: |  
-          curl -Ls https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 -o test-reporter-latest-linux-amd64
+          echo "Listing target directory..."
+          ls -R target/
+
+      - name: Upload coverage report to Code Climate  
+        run: |  
+          sudo apt-get install -y curl  
+          bash <(curl -Ls https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64)  
           chmod +x test-reporter-latest-linux-amd64  
-
-      - name: Before build step for Code Climate  
-        run: ./test-reporter-latest-linux-amd64 before-build  
+          ./test-reporter-latest-linux-amd64 before-build  
+          mvn clean test jacoco:report  
+          echo "Checking if jacoco.xml exists..."
+          ls -lh target/jacoco/  
+          ./test-reporter-latest-linux-amd64 after-build --exit-code $? -t jacoco  
         env:  
-          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
-
-      - name: Run tests and generate coverage report  
-        run: mvn clean test jacoco:report
-
-      - name: After build step for Code Climate  
-        run: ./test-reporter-latest-linux-amd64 after-build --exit-code $? -t jacoco  
-        env:  
-          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
+          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPO_TOKEN }}  
