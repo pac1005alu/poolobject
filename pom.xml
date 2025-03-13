@@ -10,7 +10,7 @@
   <version>1.0-SNAPSHOT</version>
 
   <name>PoolObject Example</name>
-  <url>https://github.com/clopezno/poolobject/</url>
+  <url>https://github.com/pac1005alu/poolobject/</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
