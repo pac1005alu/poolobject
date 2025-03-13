@@ -70,17 +70,18 @@
                 <version>0.8.7</version>
                 <executions>
                     <execution>
-                        <id>default-prepare-agent</id> <!-- Primer id único -->
+                        <id>default-prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>default-report</id> <!-- Segundo id único -->
+                        <id>default-report</id>
                         <goals>
                             <goal>report</goal>
                         </goals>
                         <configuration>
+                            <outputDirectory>${project.build.directory}/jacoco-report</outputDirectory> <!-- Ruta donde se guardará el reporte -->
                             <reports>
                                 <report>xml</report>
                                 <report>html</report>
