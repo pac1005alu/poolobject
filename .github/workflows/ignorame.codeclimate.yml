@@ -37,7 +37,7 @@ jobs:
           ./cc-test-reporter before-build  
           mvn clean test jacoco:report  
           echo "Checking if jacoco.xml exists..."
-          ls -lh \target\site\jacoco  
+          ls -lh /target/site/jacoco  
           ./test-reporter-latest-linux-amd64 after-build --exit-code $? -t jacoco  
         env:  
           CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPO_TOKEN }}  
