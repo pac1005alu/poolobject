@@ -19,5 +19,5 @@ checks:
     enabled: true  # Habilita la detección de problemas generales
 
 test_report:
-  path: "target/site/jacoco/jacoco.xml"  # Ruta correcta del reporte de cobertura de JaCoCo
+  path: "target/jacoco-report/jacoco.xml"  # Ruta correcta del reporte de cobertura de JaCoCo
   engine: jacoco  # Usa JaCoCo como herramienta de cobertura
