@@ -64,25 +64,27 @@
             </plugin>
 
             <!-- Plugin JaCoCo para cobertura de código -->
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.10</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>report</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+
+             <plugin>
+               <groupId>org.jacoco</groupId>
+               <artifactId>jacoco-maven-plugin</artifactId>
+               <version>0.8.7</version> <!-- Usa la versión correcta de JaCoCo -->
+               <executions>
+                 <execution>
+                   <goals>
+                     <goal>prepare-agent</goal>
+                     <goal>report</goal>
+                   </goals>
+                 </execution>
+               </executions>
+               <configuration>
+                 <outputDirectory>${project.build.directory}/jacoco-report</outputDirectory> <!-- Directorio para el informe -->
+                 <reportFormats>
+                   <reportFormat>LCOV</reportFormat> <!-- Formato lcov para Code Climate -->
+                 </reportFormats>
+               </configuration>
+             </plugin>
+
         </plugins>
     </build>
 </project>
