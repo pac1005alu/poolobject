@@ -1,0 +1,6 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+poolobject,ubu.gii.dass.c01,Client,37,0,0,0,12,0,2,0,2,0
+poolobject,ubu.gii.dass.c01,Reusable,10,3,0,0,1,1,1,1,1,1
+poolobject,ubu.gii.dass.c01,DuplicatedInstanceException,0,4,0,0,0,2,0,1,0,1
+poolobject,ubu.gii.dass.c01,NotFreeInstanceException,0,4,0,0,0,2,0,1,0,1
+poolobject,ubu.gii.dass.c01,ReusablePool,0,68,0,8,0,17,0,8,0,4
